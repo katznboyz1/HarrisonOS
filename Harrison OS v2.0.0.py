@@ -1,7 +1,7 @@
 try:
     from tkinter import *
     from tkinter import messagebox
-    import os, random, time, math, tkinter, winsound
+    import os, random, time, math, tkinter
     from time import localtime
 except ImportError: input('One or more of the following modules could not be imported:\n    tkinter.*\n    tkinter.messagebox\n    os\n    random\n    time\n    math\n    tkinter\n')
 
@@ -13,7 +13,7 @@ class framework():
             file.close()
         def new(account_name = os.getlogin()):
             file = open(str(str(account_name) + '.haros'), 'w')
-            file.write('USERNAME = "' + str(account_name) + '"\nPASSWORD = ""\nGLOBAL_RUNS = 0\nFILES = "' + str('|///' * 100) + '"\nLAST_CWD = "' + str(os.getcwd()) + '"\nRESOLUTION = "1200x600"\nSETUP = False\nDESKTOP_COLOR = "green"')
+            file.write('USERNAME = "' + str(account_name) + '"\nPASSWORD = ""\nGLOBAL_RUNS = 0\nFILES = "' + str('|///' * 100) + '"\nRESOLUTION = "1200x600"\nSETUP = False\nDESKTOP_COLOR = "green"')
             file.close()
         def get(account_name = os.getlogin()):
             for _ in os.listdir(os.getcwd()):
@@ -112,7 +112,7 @@ def login(password):
 def save():
     global USERNAME, PASSWORD, GLOBAL_RUNS, FILES, LAST_CWD, RESOLUTION, SETUP, DESKTOP_COLOR
     framework.file_handling.save(account_name = USERNAME, account_info = str('USERNAME = "' + str(USERNAME) + '"\nPASSWORD = "' + str(PASSWORD) + '"\nGLOBAL_RUNS = ' + str(GLOBAL_RUNS) + '\nFILES = "' + str(FILES) +
-                                '"\nLAST_CWD = "' + str(os.getcwd()) + '"\nRESOLUTION = "' + str(RESOLUTION) + '"\nSETUP = ' + str(SETUP)) + '\nDESKTOP_COLOR = "' + str(DESKTOP_COLOR) + '"')
+                                 '"\nRESOLUTION = "' + str(RESOLUTION) + '"\nSETUP = ' + str(SETUP)) + '\nDESKTOP_COLOR = "' + str(DESKTOP_COLOR) + '"')
 
 def terminate():
     global USERNAME, PASSWORD, GLOBAL_RUNS, FILES, LAST_CWD, RESOLUTION, SETUP, SCREEN, FRAME, startbarvis
@@ -135,8 +135,7 @@ def cmd_interperet(command):
     Canvas(FRAME, bg = 'gray6', width = (W - 100), height = (H - 100), highlightthickness = 0).place(x = 0, y = 0)
     if command == 'exit': screenset('desktop')
     elif command == 'tree': Label(FRAME, bg = 'gray6', fg = 'white', text = TREE, justify = 'left', font = 'Courier_new 9').place(x = 20, y = 20)
-    elif command == 'help': Label(FRAME, bg = 'gray6', fg = 'white', text = COMMANDS, justify = 'left', font = 'Couri = 'left', font = 'Courier_new 9').place(x = 20, y = 20)
-    elif command == 'help': Label(FRAME, bg = 'gray6', fg = 'white', text = COMMANDS, justify = 'er_new 9').place(x = 20, y = 20)
+    elif command == 'help': Label(FRAME, bg = 'gray6', fg = 'white', text = COMMANDS, justify = 'left', font = 'Courier_new 9').place(x = 20, y = 20)
     elif command == 'mods': Label(FRAME, bg = 'gray6', fg = 'white', text = (str(tkinter) + '\n' + str(tkinter.messagebox) + '\n' + str(os) + '\n' + str(random) + '\n' + str(time) + '\n' + str(time.localtime) +
                                                                              '\n' + str(math) + '\n' + str(winsound)), justify = 'left', font = 'Courier_new 9').place(x = 20, y = 20)
     elif command == 'netstat': Label(FRAME, bg = 'gray6', fg = 'white', text = ('Native user: ' + str(os.getlogin()) + '\nPID: ' + str(os.getpid()) + '\nPPID: ' + str(os.getppid())), justify = 'left', font = 'Courier_new 9').place(x = 20, y = 20)
@@ -290,8 +289,6 @@ else:
     exec(framework.file_handling.get())
 
 main()
-
-winsound.MessageBeep(1)
 
 OS.mainloop()
 
