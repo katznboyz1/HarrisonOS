@@ -137,7 +137,7 @@ def cmd_interperet(command):
     elif command == 'tree': Label(FRAME, bg = 'gray6', fg = 'white', text = TREE, justify = 'left', font = 'Courier_new 9').place(x = 20, y = 20)
     elif command == 'help': Label(FRAME, bg = 'gray6', fg = 'white', text = COMMANDS, justify = 'left', font = 'Courier_new 9').place(x = 20, y = 20)
     elif command == 'mods': Label(FRAME, bg = 'gray6', fg = 'white', text = (str(tkinter) + '\n' + str(tkinter.messagebox) + '\n' + str(os) + '\n' + str(random) + '\n' + str(time) + '\n' + str(time.localtime) +
-                                                                             '\n' + str(math) + '\n' + str(winsound)), justify = 'left', font = 'Courier_new 9').place(x = 20, y = 20)
+                                                                             '\n' + str(math)), justify = 'left', font = 'Courier_new 9').place(x = 20, y = 20)
     elif command == 'netstat': Label(FRAME, bg = 'gray6', fg = 'white', text = ('Native user: ' + str(os.getlogin()) + '\nPID: ' + str(os.getpid()) + '\nPPID: ' + str(os.getppid())), justify = 'left', font = 'Courier_new 9').place(x = 20, y = 20)
 
 def togglestartbar():
@@ -238,7 +238,12 @@ Shell
             if SCREEN.split('/')[1] == 'date_time':
                 Label(FRAME, text = ('Current unparsed time: ' + str(localtime())), bg = 'gray', fg = 'black').place(x = 20, y = 20)
                 Label(FRAME, text = ('Current parsed time: ' + str(gettime())), bg = 'gray', fg = 'black').place(x = 20, y = 40)
-            elif SCREEN.split('/')[1] == 'disc_info': pass
+            elif SCREEN.split('/')[1] == 'disc_info':
+                Label(FRAME, text = 'Direct reading off of the disc:', bg = 'gray', fg = 'black').place(x = 20, y = 20)
+                try:
+                    Label(FRAME, text = str(open(str(USERNAME + '.haros')).read()), bg = 'gray', fg = 'black', font = 'Courier_new 8', justify = 'left').place(x = 20, y = 50)
+                except:
+                    Label(FRAME, text = ('Error reading disc under the name of ') + str(USERNAME), bg = 'gray', fg = 'black').place(x = 20, y = 50)
             elif SCREEN.split('/')[1] == 'privacy': pass
             elif SCREEN.split('/')[1] == 'colors': pass
             elif SCREEN.split('/')[1] == 'display':
